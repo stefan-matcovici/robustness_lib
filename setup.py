@@ -13,8 +13,8 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+# with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+#     long_description = f.read()
 
 setup(
   name='robustness',
@@ -25,7 +25,7 @@ setup(
   version='9',
 
   description='Tools for Robustness',
-  long_description=long_description,
+  # long_description=long_description,
 
   # The project's main homepage.
   #url='https://github.com/',
@@ -66,8 +66,7 @@ setup(
   # simple. Or you can use find_packages().
   packages=['robustness',
             'robustness.cifar_models',
-	    'robustness.imagenet_models',
-            'robusntess.label_maps'
+	    'robustness.imagenet_models'
 	    ],
 
   include_package_data=True,
