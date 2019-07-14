@@ -172,4 +172,4 @@ class AttackerModel(ch.nn.Module):
         else:
             output = None
 
-        return (output, inp)
+        return output
