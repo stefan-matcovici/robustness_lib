@@ -112,7 +112,8 @@ class Attacker(ch.nn.Module):
                     x = step.make_step(grad) * m + x
                     x = ch.clamp(x, 0, 1)
                     x = step.project(x)
-                    if do_tqdm: iterator.set_description("Current loss: {l}".format(l=loss))
+                    if do_tqdm:
+                        iterator.set_description("Current loss: {l}. Current diff: {d}".format(l=loss, d=step.get_diff(x)))
 
             # Save computation (don't compute last loss) if not use_best
             if not use_best: return x.clone().detach()

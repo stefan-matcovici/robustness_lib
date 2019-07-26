@@ -12,7 +12,7 @@ class AttackerStep:
         - eps (float): the perturbation magnitude
         - orig_input (ch.tensor): the original input
         '''
-        self.orig_input = orig_input 
+        self.orig_input = orig_input
         self.eps = eps
         self.step_size = step_size
 
@@ -38,6 +38,16 @@ class AttackerStep:
         Given a starting input, take a random step within the feasible set
         '''
         raise NotImplementedError
+
+    def get_diff(self, x):
+        '''
+        Returns the difference in input space between initial image and crafted attack
+        :param x: crafted attack
+        :return:
+        '''
+        diff = x - self.orig_input
+        return diff.view(diff.shape[0], -1).norm(dim=1).mean().item()
+
 
 ### Instantiations of the AttackerStep class
 
