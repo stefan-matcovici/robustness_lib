@@ -152,6 +152,7 @@ class AttackerModel(ch.nn.Module):
         super(AttackerModel, self).__init__()
         self.normalizer = helpers.InputNormalize(dataset.mean, dataset.std)
         self.model = model
+        self.image_only = False
         self.attacker = Attacker(model, dataset)
 
     def forward(self, inp, target=None, make_adv=False, with_latent=False,
@@ -173,4 +174,6 @@ class AttackerModel(ch.nn.Module):
         else:
             output = None
 
+        if self.image_only:
+            return output
         return (output, inp)
